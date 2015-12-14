@@ -26,4 +26,4 @@
    service: name=httpd state=restarted
 
  - name: is port 8080 up yet
-   wait_for: wait_for: port=8080 timeout=60 host=localhost
+   wait_for: port=8080 timeout=60 host=localhost
