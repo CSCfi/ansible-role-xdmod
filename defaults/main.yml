@@ -22,3 +22,12 @@ xdmod_packages:
  - wget
 
 xdmod_dbdir: "/mnt/xdmod-db"
+
+xdmod_databases:
+ - mod_hpcdb
+ - mod_logger
+ - mod_shredder
+ - moddb
+ - modw
+ - modw_aggregates
+
