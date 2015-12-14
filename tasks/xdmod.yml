@@ -4,15 +4,18 @@
 # http://xdmod.sourceforge.net/install-source.html
 
  - name: download xdmod tar ball
-   get_url: url="http://downloads.sourceforge.net/project/xdmod/xdmod/5.0.0/xdmod-5.0.0.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fxdmod%2Ffiles%2Fxdmod%2F5.0.0%2F&ts=1450090065&use_mirror=vorboss" dest=/opt/xdmod-5.0.0.tar.gz
+   get_url: url="http://downloads.sourceforge.net/project/xdmod/xdmod/5.0.0/xdmod-5.0.0.tar.gz" dest=/opt/xdmod-5.0.0.tar.gz
    when: xdmod_tarball_install
 
  - name: extract said tar ball xdmod
-   unarchive: src=/opt/xdmod-5.0.0.tar.gz dest=/opt/
+   unarchive: src=/opt/xdmod-5.0.0.tar.gz dest=/opt/ copy=no
    when: xdmod_tarball_install
 
- - name: symlink /opt/xdmod-version to /opt/xdmod
-   file: src=/opt/xdmod-5.0.0 dest=/opt/xdmod state=link
+ - name: run the install script
+   command: ./install --prefix=/opt/xdmod
+   args:
+     chdir: /opt/xdmod-5.0.0
+     creates: /opt/xdmod
    when: xdmod_tarball_install
 
  # /opt/xdmod/bin/xdmod-setup

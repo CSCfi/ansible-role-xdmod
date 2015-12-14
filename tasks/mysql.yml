@@ -2,7 +2,7 @@
 # tasks file for ansible-role-xdmod
 #
  - name: tune database
-   template: src=my.cnf.j2 dest=/etc/mysql/my.cnf
+   template: src=my.cnf.j2 dest=/etc/my.cnf.d/tune.cnf
 
  - name: Create databases
    mysql_db: name={{ item }}
@@ -17,5 +17,5 @@
    with_items: "{{xdmod_databases}}"
 
  - name: Create user for xdmod
-   mysql_user: name= {{ xdmod_db_user }} password= {{ xdmod_db_password }} append_privs=yes priv={{ item }}.*:ALL state=present
+   mysql_user: name={{ xdmod_db_user }} password={{ xdmod_db_password }} append_privs=yes priv={{ item }}.*:ALL state=present
    with_items: "{{xdmod_databases}}"
