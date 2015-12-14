@@ -1,21 +1,34 @@
 ---
 # tasks file for ansible-role-xdmod
 #
- - name: tune database
-   template: src=my.cnf.j2 dest=/etc/my.cnf.d/tune.cnf
+---
+# tasks file for ansible-role-xdmod
+#
+ - name: install mysql-python
+   yum: name=MySQL-python state=present
+
+# - name: tune database ToDo: Fix this
+#   template: src=my.cnf.j2 dest=/etc/my.cnf.d/tune.cnf
+
+ - name: Ensure MySQL is started and enabled on boot.
+   service: 
+     name=mariadb 
+     state=started 
+     enabled=true
 
  - name: Create databases
    mysql_db: name={{ item }}
-   with_items: "{{xdmod_databases}}"   
-
+   with_items: "{{xdmod_databases }}"
+   
  - name: Import schemas
-   mysql_db: state=import name={{ item }} target=/usr/share/xdmod/db/schema/{{ item }}.sql
-   with_items: "{{xdmod_databases}}"
-
+   mysql_db: state=import name={{ item }} target=/opt/xdmod-5.0.0/db/schema/{{ item }}.sql
+   with_items: "{{ xdmod_databases }}"
+ 
  - name: Import data
-   mysql_db: state=import name={{ item }} target=/usr/share/xdmod/db/schema/{{ item }}.sql
-   with_items: "{{xdmod_databases}}"
+   mysql_db: state=import name={{ item }} target=/opt/xdmod-5.0.0/db/data/{{ item }}.sql
+   with_items: "{{ xdmod_databases2 }}"
 
  - name: Create user for xdmod
    mysql_user: name={{ xdmod_db_user }} password={{ xdmod_db_password }} append_privs=yes priv={{ item }}.*:ALL state=present
    with_items: "{{xdmod_databases}}"
+

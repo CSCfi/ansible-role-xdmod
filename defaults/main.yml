@@ -31,6 +31,14 @@ xdmod_databases:
  - modw
  - modw_aggregates
 
+xdmod_databases2:
+ - mod_hpcdb
+ - mod_logger
+ - mod_shredder
+ - moddb
+ - modw
+
+
 xdmod_tarball_install: False
 xdmod_symlinks:
  - { src: "/opt/xdmod/etc/apache.d/xdmod.conf", dest: "/etc/httpd/conf.d/xdmod.conf" }
