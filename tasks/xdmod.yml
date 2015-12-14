@@ -5,12 +5,25 @@
 
  - name: download xdmod tar ball
    get_url: url="http://downloads.sourceforge.net/project/xdmod/xdmod/5.0.0/xdmod-5.0.0.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fxdmod%2Ffiles%2Fxdmod%2F5.0.0%2F&ts=1450090065&use_mirror=vorboss" dest=/opt/xdmod-5.0.0.tar.gz
+   when: xdmod_tarball_install
 
- # extract to /opt/xdmod5.0.0
- # symlink 5.0.0 to /opt/xdmod
+ - name: extract said tar ball xdmod
+   unarchive: src=/opt/xdmod-5.0.0.tar.gz dest=/opt/
+   when: xdmod_tarball_install
+
+ - name: symlink /opt/xdmod-version to /opt/xdmod
+   file: src=/opt/xdmod-5.0.0 dest=/opt/xdmod state=link
+   when: xdmod_tarball_install
+
  # /opt/xdmod/bin/xdmod-setup
- # ln -s /opt/xdmod/etc/apache.d/xdmod.conf /etc/apache2/conf.d/xdmod.conf
- # ln -s /opt/xdmod/etc/cron.d/xdmod /etc/cron.d/xdmod
- # ln -s /opt/xdmod/etc/logrotate.d/xdmod /etc/logrotate.d/xdmod
- # /etc/init.d/apache2 restart
- # http://localhost:8080/ should respond
+ #
+ 
+ - name: symlink config files for apache cron logrotate
+   file: src={{ item.src }} dest={{ item.dest }} state=link
+   with_items: xdmod_symlinks
+
+ - name: restart httpd
+   service: name=httpd state=restarted
+
+ - name: is port 8080 up yet
+   wait_for: wait_for: port=8080 timeout=60 host=localhost
