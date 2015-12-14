@@ -16,12 +16,6 @@
    mysql_db: state=import name={{ item }} target=/usr/share/xdmod/db/schema/{{ item }}.sql
    with_items: "{{xdmod_databases}}"
 
- - name: Create user for db root
-   mysql_user: name= {{ root_db_user }} password= {{ root_db_password }} priv=*.*:ALL state=present
-
  - name: Create user for xdmod
-   mysql_user: name= {{ xdmod_db_user }} password= {{ xdmod_db_password }} priv=*.*:ALL state=present
-
- - name: give users access to multiple databases
-   mysql_user: name={{ xdmod_db_user }} priv={{ item }}.*:ALL append_privs=yes password={{ root_db_password }}   
+   mysql_user: name= {{ xdmod_db_user }} password= {{ xdmod_db_password }} append_privs=yes priv={{ item }}.*:ALL state=present
    with_items: "{{xdmod_databases}}"
