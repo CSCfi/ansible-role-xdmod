@@ -1,2 +1,20 @@
 ---
 # defaults file for ansible-role-xdmod
+
+xdmod_packages:
+ - httpd 
+ - mariadb-server
+ - mariadb
+ - php
+ - php-cli
+ - php-mysq
+ - php-pdo 
+ - php-gd 
+ - php-xml 
+ - php-pear-Log 
+ - php-pear-MDB2
+ - php-pear-MDB2-Driver-mysql 
+ - java-1.8.0-openjdk
+ - java-1.8.0-openjdk-devel 
+ - cronie 
+ - logrotate

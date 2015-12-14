@@ -1,0 +1,7 @@
+---
+
+  - name: configure an xdmod server
+    hosts: xdmodserver
+
+    roles:
+      - ansible-role-xdmod
