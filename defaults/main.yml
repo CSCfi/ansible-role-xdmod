@@ -19,3 +19,5 @@ xdmod_packages:
  - java-1.8.0-openjdk-devel 
  - cronie 
  - logrotate
+
+xdmod_dbdir: "/mnt/xdmod-db"
