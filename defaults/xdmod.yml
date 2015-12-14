@@ -1,7 +1,0 @@
----
-
-xdmod_tarball_install: False
-xdmod_symlinks:
- - { src: "/opt/xdmod/etc/apache.d/xdmod.conf", dest: "/etc/apache2/conf.d/xdmod.conf" }
- - { src: "/opt/xdmod/etc/cron.d/xdmod", dest: "/etc/cron.d/xdmod" }
- - { src: "/opt/xdmod/etc/logrotate.d/xdmod", dest: "/etc/logrotate.d/xdmod" }
