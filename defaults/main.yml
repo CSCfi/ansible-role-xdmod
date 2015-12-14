@@ -8,7 +8,7 @@ xdmod_packages:
  - mariadb
  - php
  - php-cli
- - php-mysq
+ - php-mysql
  - php-pdo 
  - php-gd 
  - php-xml 
