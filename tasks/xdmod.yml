@@ -32,16 +32,18 @@
 # Uncomment the line below if running Apache 2.4:
 #                #Require all granted
 #
- - name: require all granted in the httpd config
-   lineinfile: dest=/etc/httpd/conf.d/xdmod.conf
-               regexp='#Require all granted$'
-               line="Require all granted"
-               state=present
-   notify:
-    - restart httpd
+# - name: require all granted in the httpd config
+#   lineinfile: dest=/etc/httpd/conf.d/xdmod.conf
+#               regexp='#Require all granted$'
+#               line="Require all granted"
+#               state=present
+#   notify:
+#    - restart httpd
 
  - name: template in xdmod.conf.j2 for apache httpd
    template: src=xdmod.conf.j2 dest=/opt/xdmod/etc/apache.d/xdmod.conf backup=no
+   notify:
+    - restart httpd
 
 #
 # - name: is port 8080 up yet
@@ -49,3 +51,6 @@
 
  - name: template in portal_settings.ini
    template: src=portal_settings.ini.j2 dest=/opt/xdmod/etc/portal_settings.ini backup=yes
+   notify:
+    - restart httpd
+
