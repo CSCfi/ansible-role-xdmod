@@ -13,6 +13,9 @@
      state=started 
      enabled=true
 
+ - name: template in my.conf
+   template: src=my.cnf.j2 dest=/etc/my.cnf backup=yes
+
  - name: Create databases
    mysql_db: name={{ item }}
    with_items: "{{xdmod_databases }}"
