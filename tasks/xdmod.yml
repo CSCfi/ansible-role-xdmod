@@ -43,3 +43,6 @@
 #
  - name: is port 8080 up yet
    wait_for: port=8080 timeout=60 host=localhost
+
+ - name: template in portal_settings.ini
+   template: src=portal_settings.ini.j2 dest=/opt/xdmod/etc/portal_settings.ini backup=yes
