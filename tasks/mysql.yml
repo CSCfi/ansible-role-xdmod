@@ -13,8 +13,14 @@
      state=started 
      enabled=true
 
- - name: template in my.conf
+ - name: template in my.cnf
    template: src=my.cnf.j2 dest=/etc/my.cnf backup=yes
+   register: xdmod_mysql_conf_reg
+
+ - name: restart mysql if my.conf has been updated
+   service: 
+     name=mariadb 
+     state=restarted 
 
  - name: Create databases
    mysql_db: name={{ item }}
