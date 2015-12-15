@@ -20,6 +20,7 @@ xdmod_packages:
  - cronie 
  - logrotate
  - wget
+ - bzip2
 
 xdmod_dbdir: "/mnt/xdmod-db"
 
@@ -46,4 +47,5 @@ xdmod_symlinks:
  - { src: "/opt/xdmod/etc/logrotate.d/xdmod", dest: "/etc/logrotate.d/xdmod" }
 xdmod_import_schemas: False
 xdmod_import_data: False
+phantomjs_version: "~1.9"
 
