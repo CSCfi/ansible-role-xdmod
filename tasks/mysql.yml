@@ -11,6 +11,9 @@
    template: src=my.cnf.j2 dest=/etc/my.cnf backup=yes
    register: xdmod_mysql_conf_reg
 
+ - name: create mysqldb datadir
+   file: path={{ xdmod_dbdir }} state=directory owner=root group=mysql mode=0755
+
  - name: Ensure MySQL is started and enabled on boot.
    service: 
      name=mariadb 
