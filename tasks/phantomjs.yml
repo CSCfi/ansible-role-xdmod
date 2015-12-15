@@ -4,11 +4,11 @@
  - name: install npm
    yum: name=npm state=present
 
-- name: install > Packages
-  npm:
-    name: "{{ item }}"
-    version: ~2
-    state: present
-    global: True
-  with_items:
-    - phantomjs
+ - name: install > Packages
+   npm:
+     name: "{{ item }}"
+     version: ~2
+     state: present
+     global: True
+   with_items:
+     - phantomjs
