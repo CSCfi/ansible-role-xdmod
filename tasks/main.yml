@@ -7,3 +7,5 @@
  - include: mysql.yml
  - include: xdmod.yml
  - include: mysql_import.yml
+ - include: php.yml
+ - include: phantomjs.yml

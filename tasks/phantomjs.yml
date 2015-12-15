@@ -1,0 +1,14 @@
+---
+# tasks file for ansible-role-xdmod
+#
+ - name: install npm
+   yum: name=npm state=present
+
+- name: install > Packages
+  npm:
+    name: "{{ item }}"
+    version: ~2
+    state: present
+    global: True
+  with_items:
+    - phantomjs
