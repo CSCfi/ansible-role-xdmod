@@ -4,4 +4,5 @@
  - include: redhat.yml
    when: ansible_os_family == "RedHat"
 
+ - include: mysql.yml
  - include: xdmod.yml
