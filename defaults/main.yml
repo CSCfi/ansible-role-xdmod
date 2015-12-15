@@ -44,5 +44,6 @@ xdmod_symlinks:
  - { src: "/opt/xdmod/etc/apache.d/xdmod.conf", dest: "/etc/httpd/conf.d/xdmod.conf" }
  - { src: "/opt/xdmod/etc/cron.d/xdmod", dest: "/etc/cron.d/xdmod" }
  - { src: "/opt/xdmod/etc/logrotate.d/xdmod", dest: "/etc/logrotate.d/xdmod" }
-xdmod_import_schemas: True
+xdmod_import_schemas: False
+xdmod_import_data: False
 
