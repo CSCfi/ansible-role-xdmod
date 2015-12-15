@@ -1,9 +1,6 @@
 ---
 # tasks file for ansible-role-xdmod
 #
----
-# tasks file for ansible-role-xdmod
-#
  - name: install mysql-python
    yum: name=MySQL-python state=present
 
