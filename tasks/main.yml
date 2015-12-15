@@ -8,4 +8,6 @@
  - include: xdmod.yml
  - include: mysql_import.yml
  - include: php.yml
+   tags: php
  - include: phantomjs.yml
+   tags: phantomjs
