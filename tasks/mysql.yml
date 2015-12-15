@@ -7,15 +7,15 @@
 # - name: tune database ToDo: Fix this
 #   template: src=my.cnf.j2 dest=/etc/my.cnf.d/tune.cnf
 
+ - name: template in my.cnf
+   template: src=my.cnf.j2 dest=/etc/my.cnf backup=yes
+   register: xdmod_mysql_conf_reg
+
  - name: Ensure MySQL is started and enabled on boot.
    service: 
      name=mariadb 
      state=started 
      enabled=true
-
- - name: template in my.cnf
-   template: src=my.cnf.j2 dest=/etc/my.cnf backup=yes
-   register: xdmod_mysql_conf_reg
 
  - name: restart mysql if my.conf has been updated
    service: 
