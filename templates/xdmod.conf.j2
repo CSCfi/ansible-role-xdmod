@@ -1,0 +1,24 @@
+Listen 443
+<VirtualHost *:443>
+    #ServerName open-xdmod.localdomain
+    #ServerAdmin admin@open-xdmod.localdomain
+
+    DocumentRoot /opt/xdmod/share/html
+
+    <Directory /opt/xdmod/share/html>
+        Options FollowSymLinks
+        AllowOverride All
+        DirectoryIndex index.php
+
+        # Uncomment the line below if running Apache 2.4:
+        Require all granted
+    </Directory>
+
+    <Directory /opt/xdmod/share/html/rest>
+        RewriteEngine On
+        RewriteRule (.*) index.php [L]
+    </Directory>
+
+    ErrorLog /opt/xdmod/logs/apache-error.log
+    CustomLog /opt/xdmod/logs/apache-access.log combined
+</VirtualHost>
