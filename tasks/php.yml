@@ -6,6 +6,6 @@
 #
  - name: set php timezone
    lineinfile: dest=/etc/php.ini 
-                regexp='^date.timezone = Europe/Helsinki$'' 
-                line="date.timezone = Europe/Helsinki" 
-                state=present
+               regexp='^date.timezone = {{ xdmod_php_timezone }}$' 
+               line="date.timezone = {{ xdmod_php_timezone }}" 
+               state=present

@@ -49,3 +49,4 @@ xdmod_import_schemas: False
 xdmod_import_data: False
 phantomjs_version: "~1.9"
 
+xdmod_php_timezone: "Europe/Helsinki"
