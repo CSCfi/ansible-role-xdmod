@@ -6,3 +6,4 @@
 
  - include: mysql.yml
  - include: xdmod.yml
+ - include: mysql_import.yml
