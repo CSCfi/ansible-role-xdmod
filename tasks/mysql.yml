@@ -12,7 +12,7 @@
    register: xdmod_mysql_conf_reg
 
  - name: create mysqldb datadir
-   file: path={{ xdmod_dbdir }} state=directory owner=root group=mysql mode=0755
+   file: path={{ xdmod_dbdir }} state=directory owner=mysql group=mysql mode=0755
 
  - name: Ensure MySQL is started and enabled on boot.
    service: 
