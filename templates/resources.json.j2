@@ -1,0 +1,13 @@
+[
+
+{% for item in xdmod_resources %}
+  {
+    "resource": "{{ item.resource }}",
+    "resource_type_id": {{ item.resource_type_id }},
+    "name": "{{ item.name }}"
+  }{% if not loop.last %},
+{% endif %}
+{% endfor %}
+
+
+]

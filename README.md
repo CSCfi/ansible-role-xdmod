@@ -29,7 +29,7 @@ ansible-playbook -i hosts xdmod.yml -e xdmod_tarball_install=True -e xdmod_impor
 These variables needs to be defined with the username/password for xdmod's dbuser
 <pre>
  xdmod_db_user: ""
- xdmod_db_password: ""
+ xdmod_db_pass: ""
 </pre>
 
 Dependencies

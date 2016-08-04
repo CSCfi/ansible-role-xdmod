@@ -1,0 +1,9 @@
+{% for item in xdmod_updtchck %}
+  {
+    "email": "{{ item.email }}",
+    "name": "{{ item.name }}",
+    "organization": "{{ item.org }}",
+    "enabled": {{ item.enabled }}
+  }{% if not loop.last %},
+{% endif %}
+{% endfor %}

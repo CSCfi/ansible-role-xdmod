@@ -3,4 +3,4 @@
 #
  - name: install rpms
    yum: name={{ item }} state=present
-   with_items: xdmod_packages
+   with_items: "{{ xdmod_packages }}"
