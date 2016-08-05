@@ -27,8 +27,16 @@
    shell: /usr/bin/xdmod-slurm-helper -r {{ item.resource }}
    with_items: "{{ xdmod_resources }}"
 
- - debug: msg="/usr/bin/xdmod-slurm-helper -r {{ item.resource }}"
+ - name: create crontab entries for xdmod-slurm-helper
+   cron: name="xdmod-slurm-helper" minute=0 hour={{ item.resource_type_id }}
+        user="root" job="/usr/bin/xdmod-slurm-helper --quiet -r {{ item.resource }}"
+        cron_file=xdmod
    with_items: "{{ xdmod_resources }}"
 
  - name: execute xdmod-ingestor command
    shell: /usr/bin/xdmod-ingestor -v
+
+ - name: create crontab entries for xdmod-ingestor
+   cron: name="xdmod-ingestor" minute=0 hour=7
+        user="root" job="/usr/bin/xdmod-ingestor --quiet"
+        cron_file=xdmod
