@@ -1,0 +1,7 @@
+{% for item in xdmod_org %}
+{
+    "name": "{{ item.name }}",
+    "abbrev": "{{ item.abbrev }}"
+}{% if not loop.last %},
+{% endif %}
+{% endfor %}

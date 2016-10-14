@@ -1,0 +1,14 @@
+[
+
+{% for item in xdmod_resource_specs %}
+  {
+    "resource": "{{ item.resource }}",
+    "processors": {{ item.processors }},
+    "nodes": {{ item.nodes }},
+    "ppn": {{ item.ppn }}
+  }{% if not loop.last %},
+{% endif %}
+{% endfor %}
+
+
+]

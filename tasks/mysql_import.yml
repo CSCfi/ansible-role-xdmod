@@ -2,16 +2,16 @@
 # tasks file for ansible-role-xdmod
 #
  - name: Import schemas
-   mysql_db: state=import name={{ item }} target=/opt/xdmod-5.0.0/db/schema/{{ item }}.sql
+   mysql_db: state=import name={{ item }} target=/usr/share/xdmod/db/schema/{{ item }}.sql
    with_items: "{{ xdmod_databases }}"
    when: xdmod_import_schemas
  
  - name: Import data
-   mysql_db: state=import name={{ item }} target=/opt/xdmod-5.0.0/db/data/{{ item }}.sql
-   with_items: "{{ xdmod_databases2 }}"
+   mysql_db: state=import name={{ item }} target=/usr/share/xdmod/db/data/{{ item }}.sql
+   with_items: "{{ xdmod_databases_data }}"
    when: xdmod_import_data
 
  - name: Create user for xdmod
-   mysql_user: name={{ xdmod_db_user }} password={{ xdmod_db_password }} append_privs=yes priv={{ item }}.*:ALL state=present
+   mysql_user: name={{ xdmod_db_user }} password={{ xdmod_db_pass }} append_privs=yes priv={{ item }}.*:ALL state=present
    with_items: "{{xdmod_databases}}"
 

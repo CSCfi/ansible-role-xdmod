@@ -21,18 +21,20 @@ xdmod_packages:
  - logrotate
  - wget
  - bzip2
+ - MySQL-python
 
 xdmod_dbdir: "/mnt/xdmod-db"
 
-xdmod_databases:
+xdmod_databases: # schema
  - mod_hpcdb
  - mod_logger
  - mod_shredder
  - moddb
  - modw
  - modw_aggregates
+ - modw_filters
 
-xdmod_databases2:
+xdmod_databases_data:
  - mod_hpcdb
  - mod_logger
  - mod_shredder
@@ -50,3 +52,40 @@ xdmod_import_data: False
 phantomjs_version: "~1.9"
 
 xdmod_php_timezone: "Europe/Helsinki"
+
+xdmod_db_user: ""
+# Commented to make sure you do it or at least you are aware.
+#  xdmod_db_pass: "M4keSureUOverWr1teM3N0w!" 
+
+xdmod_org:
+  - { name: "Organization name", abbrev: "Organization abbreviation" }
+
+xdmod_updtchck:
+  - { email: "email", name: "name", org: "organization", enabled: true }
+
+xdmod_resources:
+  - { resource: "shortName", resource_type_id: "1", name: "longName" }
+
+xdmod_resource_specs:
+  - { resource: "shortName", processors: "60", nodes: "5", ppn: "12" }
+
+xdmod_logofile_name: "FGCI-logo.jpg"
+
+xdmod_pstes_title: "Open XDMoD"
+xdmod_psets_siteAddr: "http://localhost:8080/"
+xdmod_psets_userManual: "http://xdmod.sourceforge.net/index.html"
+xdmod_psets_contact_page_recipient: "email@example.com"
+xdmod_psets_tech_support_recipient: "email@example.com"
+xdmod_psets_debug_mode: "off"
+xdmod_psets_debug_recipient: "{{ xdmod_psets_tech_support_recipient }}"
+xdmod_psets_center_logo: "/etc/xdmod/{{ xdmod_logofile_name }}"
+xdmod_psets_center_logo_width: "154"
+
+xdmod_psets_mailer_sender_name: "Luís Alves"
+xdmod_psets_mailer_sender_email: "{{ xdmod_psets_tech_support_recipient }}"
+
+xdmod_psets_report_base_path: "/usr/share/xdmod/reporting/jasper_builder"
+xdmod_psets_report_java_path: "/usr/bin/java"
+xdmod_psets_report_javac_path: "/usr/bin/javac"
+xdmod_psets_report_phantomjs_path: "/usr/bin/phantomjs"
+
