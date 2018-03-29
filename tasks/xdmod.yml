@@ -1,7 +1,7 @@
 ---
 
  - name: getting XDMoD CentOS 7 RPM
-   yum: name=https://sourceforge.net/projects/xdmod/files/xdmod/5.6.0/xdmod-5.6.0-1.0.el7.centos.noarch.rpm state=present
+   yum: name=https://github.com/ubccr/xdmod/releases/download/v5.6.0/xdmod-5.6.0-1.0.el7.centos.noarch.rpm state=present
 
  - name: add super DB user
    mysql_user: name=admin password={{ xdmod_db_pass }} priv=*.*:ALL,GRANT state=present
